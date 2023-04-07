@@ -4,14 +4,15 @@ const host = "127.0.0.1";
 const port = 5500;
 
 var stats = {user_agent:0};
+var comments = [];
 
 const server = http.createServer((req,res)=>{
     if (req.url === "/") {
         res.statusCode = 201;
         res.setHeader("Content-type", "text/plain");
         res.end("Hi!");
-    }else if (req.method === "GET") {
-        if (req.url === "/stats") {
+    }else if (req.url === "/stats") {
+        if (req.method === "GET") {
             res.statusCode = 200;
             stats.user_agent++;
             res.setHeader("Content-Type", "text/html");
@@ -28,13 +29,15 @@ const server = http.createServer((req,res)=>{
         }
     }else if (req.url === "/comments") {
         if (req.method === "POST") {
+            // var comments = [];
             body = "";
             req.on("data", (chunk)=>{
-                body+= chunk.toString();
+                body+= chunk;
             })
             req.on("end", ()=>{
-                res.end(body); //полученные сервером данные выводим обратно клиенту
-                console.log(body); //выводим данные, полученные на сервер в консоль
+                comments.push(JSON.parse(body));
+                res.end(JSON.stringify(comments)); //полученные сервером данные выводим обратно клиенту
+                console.log(comments); //выводим данные, полученные на сервер в консоль
             })
         }
     } else{

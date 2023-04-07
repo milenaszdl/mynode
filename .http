@@ -13,7 +13,11 @@ Content-Type: application/json
 
 {
     "name": "Eva",
-    "email": "abas1111@mail.ru",
-    "password": "12345678"
+    "comment": "молоко 500 мл яйца 3 шт. мука 200 г масло сливочное (или растительное) 30 г (2 ст. ложки) сахар 30 г (2 ст. ложки) соль 2-3 г (1/2 ч. ложки)"
 }
+
+###
+GET /user HTTP/1.1
+Host: 127.0.0.1:5500
+Content-Type: text/plain
 
