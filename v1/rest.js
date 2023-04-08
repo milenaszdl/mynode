@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 var stats = {user_agent:0};
+var comments = [];
 
 router.get('/', function(req,res) {
     res.send('Привет');
@@ -10,6 +11,7 @@ router.get('/', function(req,res) {
 router.get('/stats', function(req,res) {
     stats.user_agent++;
     // res.setHeader("Content-Type", "text/html");
+    res.status(200);
     res.send(`<table>
         <tr>
             <th>User-agent:</th>
@@ -22,15 +24,10 @@ router.get('/stats', function(req,res) {
     </table>`);
 })
 
-router.post('/comments', function(req,res) {
-    body = "";
-    req.on("data", (chunk)=>{
-        body+= chunk.toString();
-    })
-    req.on("end", ()=>{
-        res.end(body); //полученные сервером данные выводим обратно клиенту
-        console.log(body); //выводим данные, полученные на сервер в консоль
-    })
+router.post('/comments', express.json(),function(req,res) {
+    comments.push(req.body.name, req.body.comment);
+    res.status(201);
+    res.send(JSON.stringify(comments));
 })
 
 module.exports = router;
