@@ -7,6 +7,11 @@ Host: 127.0.0.1:5500
 Content-Type: text/html
 
 ###
+POST /v1/author?apiKey=getauthorised HTTP/1.1
+Host: 127.0.0.1:5500
+Content-Type: application/json
+
+###
 POST /v1/comments HTTP/1.1
 Host: 127.0.0.1:5500
 Content-Type: application/json
@@ -21,3 +26,18 @@ GET /v1/user HTTP/1.1
 Host: 127.0.0.1:5500
 Content-Type: text/plain
 
+###
+
+POST /v1/login HTTP/1.1
+Host: 127.0.0.1:5500
+Content-Type: application/json
+
+{
+    "name": "milena",
+    "email": "milicca0708083@mail.ru",
+    "password": "milena228"
+}
+
+###
+GET /v3/userss HTTP/1.1
+Host: 127.0.0.1:5500
