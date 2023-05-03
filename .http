@@ -2,6 +2,32 @@ GET / HTTP/1.1
 Host: 127.0.0.1:5500
 
 ###
+GET /v1 HTTP/1.1
+Host: 127.0.0.1:5500
+
+###
+GET /v1/dbcomments HTTP/1.1
+Host: 127.0.0.1:5500
+
+###
+GET /v1/dbcomments/6452bb711b3070922cca8879 HTTP/1.1
+Host: 127.0.0.1:5500
+
+###
+POST /v1/dbcomments HTTP/1.1
+Host: 127.0.0.1:5500
+Content-Type: application/json
+
+{
+  "name": "Milena",
+  "comment": "тестирую бдшку"
+}
+
+###
+# GET /v1/dbcomments/Grisha HTTP/1.1
+# Host: 127.0.0.1:5500
+
+###
 GET /v1/stats HTTP/1.1
 Host: 127.0.0.1:5500
 Content-Type: text/html
@@ -22,11 +48,6 @@ Content-Type: application/json
 }
 
 ###
-GET /v1/user HTTP/1.1
-Host: 127.0.0.1:5500
-Content-Type: text/plain
-
-###
 
 POST /v1/login HTTP/1.1
 Host: 127.0.0.1:5500
@@ -37,7 +58,3 @@ Content-Type: application/json
     "email": "milicca0708083@mail.ru",
     "password": "milena228"
 }
-
-###
-GET /v3/userss HTTP/1.1
-Host: 127.0.0.1:5500

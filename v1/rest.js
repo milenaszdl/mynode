@@ -4,6 +4,10 @@ const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const helmet = require('helmet');
 
+router.use(express.json());
+
+const commentsController = require("../controllers/comments");
+
 const jsonParser = bodyParser.json({
     extended: false,
 });
@@ -16,6 +20,12 @@ const user = {name: "milena", email: "milicca0708083@mail.ru", password: "milena
 router.get('/', function(req,res) {
     res.send('Привет');
 })
+
+//юзаем обработчики для бд
+router.get("/dbcomments", commentsController.getAllComments);
+router.get("/dbcomments/:id", commentsController.getComment);
+router.post("/dbcomments", express.json(), commentsController.postAddComments);
+//router.get("/dbcommnets/:name", commentsController.getCommentByName);
 
 router.get('/stats', function(req,res) {
     stats.user_agent++;
