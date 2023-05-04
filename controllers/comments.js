@@ -16,8 +16,9 @@ async function getComment(req, res) {
 }
 
 function postAddComments(req, res) {
+  const commentdate = new Date();
   const { name, comment } = req.body;
-  commentServices.insertComment({ name, comment });
+  commentServices.insertComment({ name, comment, commentdate });
   res.json()
 }
 
