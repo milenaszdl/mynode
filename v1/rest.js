@@ -25,7 +25,7 @@ router.get('/', function(req,res) {
 router.get("/dbcomments", commentsController.getAllComments);
 router.get("/dbcomments/:id", commentsController.getComment);
 router.post("/dbcomments", express.json(), commentsController.postAddComments);
-//router.get("/dbcommnets/:name", commentsController.getCommentByName);
+router.get("/searchdb", commentsController.getCommentByName);
 
 router.get('/stats', function(req,res) {
     stats.user_agent++;

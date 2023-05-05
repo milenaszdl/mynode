@@ -29,8 +29,8 @@ async function findComment(id) {
 }
 
 async function findName(name) {
-  const comments =- db.collection("comments");
-  const result = await comments.findOne({ _name: new ObjectId(name) });
+  const comments = db.collection("comments");
+  const result = await comments.findOne({ name });
   return result;
 }
 

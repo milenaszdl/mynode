@@ -23,11 +23,13 @@ function postAddComments(req, res) {
 }
 
 async function getCommentByName (req, res) {
-    if (ObjectId.isValid(req.params.name)) {
-        let comment = await comment.Services.findName(req.params.name)
-        res.json(comment)
-    } else {
-        res.status(404).send("Object Not Found")
+    const apiName = req.query.apiName;
+    let comment = await commentServices.findName(apiName);
+    if (comment){
+      res.json(comment);
+    }
+    else {
+        res.status(404).send("Object Not Found");
     }
 }
 

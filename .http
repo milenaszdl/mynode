@@ -24,8 +24,8 @@ Content-Type: application/json
 }
 
 ###
-# GET /v1/dbcomments/Grisha HTTP/1.1
-# Host: 127.0.0.1:5500
+GET /v1/searchdb?apiName=Grisha HTTP/1.1
+Host: 127.0.0.1:5500
 
 ###
 GET /v1/stats HTTP/1.1
